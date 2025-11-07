@@ -17,7 +17,7 @@ html {
 }
 
 body {
-  color-scheme: light;
+  color-scheme: dark;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
@@ -32,4 +32,28 @@ body {
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-toolbar {
+  min-height: 120px;
+}
+
+.brand_logo {
+  width: 90px;
+  height: 110px;
+  display: block;
+}
+
+.padding-32 {
+  padding-inline: 32px;
+}
+
+.blue-text {
+  color: #021421;
 }
