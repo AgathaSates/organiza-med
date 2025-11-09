@@ -32,13 +32,9 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <a>
-        <span class="gradient-title ms-2">Organiza Med Oblivion</span>
-      </a>
     </mat-toolbar>
-    <svg height="32" width="32" style="position: relative; top: 0; right: 0">
-      <path class="sidenav-svg" d="M 32,0 H -32,0 V 0,32 a 32, 32 0 0, 1 32,-32"></path>
-    </svg>
-    <div class="container-fluid padding-32"><ng-content></ng-content></div>
+    <div class="container-fluid mt-3">
+      <ng-content></ng-content>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
