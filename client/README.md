@@ -1,3 +1,0 @@
-# Organiza Med
-
-mimimimi
