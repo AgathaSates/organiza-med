@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header class="">
+    <div class="d-flex justify-content-between align-items-center w-100">
+      <mat-card-title class="">{{ ItemCardInicio.nomeModulo }}</mat-card-title>
+      <button
+        matMiniFab
+        [aria-label]="ItemCardInicio.ariaLabelBotao"
+        [title]="ItemCardInicio.botao1Title"
+        [routerLink]="ItemCardInicio.botao1Link"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+
+  <img mat-card-image [src]="ItemCardInicio.imagemSrc" [alt]="ItemCardInicio.imagemAlt" />
+
+  <mat-card-content>
+    <mat-card-title class="mt-2">{{ ItemCardInicio.titulo }}</mat-card-title>
+    <p class="text-center mt-2">
+      {{ ItemCardInicio.descricao }}
+    </p>
+
+    <a
+      matFab
+      extended
+      [routerLink]="ItemCardInicio.botao2Link"
+      [title]="ItemCardInicio.botao2Title"
+    >
+      <mat-icon>{{ ItemCardInicio.botaoIcone }}</mat-icon>
+      {{ ItemCardInicio.botaoTexto }}
+    </a>
+  </mat-card-content>
+</mat-card>

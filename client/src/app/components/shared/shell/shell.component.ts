@@ -8,9 +8,9 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { ItemsNavbar } from '../../../models/items-navbar';
-import { ITEMS_NAVBAR } from '../../../data/items-navbar.data';
 import { RouterLink } from '@angular/router';
+import { ItensNavbar } from '../../../models/itens-navbar';
+import { ITENS_NAVBAR } from '../../../data/items-navbar.data';
 
 @Component({
   selector: 'as-shell',
@@ -29,7 +29,7 @@ import { RouterLink } from '@angular/router';
 export class AsShell {
   private breakpointObserver = inject(BreakpointObserver);
 
-  public readonly itemsNavbar: readonly ItemsNavbar[] = ITEMS_NAVBAR;
+  public readonly itensNavbar: readonly ItensNavbar[] = ITENS_NAVBAR;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Handset])

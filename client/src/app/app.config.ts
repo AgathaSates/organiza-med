@@ -6,11 +6,11 @@ import {
 import { provideRouter, Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
   {
-    path: 'home',
+    path: 'inicio',
     loadComponent() {
-      return import('./components/home/home').then((h) => h.AsHome);
+      return import('./components/inicio/inicio').then((h) => h.AsInicio);
     },
   },
 ];

@@ -3,14 +3,14 @@ import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { ItemsCardHome } from '../../models/items-card-home';
 import { RouterLink } from '@angular/router';
+import { ItensCardInicio } from '../../models/itens-card-inicio';
 
 @Component({
-  selector: 'as-card-home',
+  selector: 'as-card-inicio',
   imports: [MatCardModule, MatIconModule, MatButtonModule, RouterLink],
-  templateUrl: './as-card-home.html',
+  templateUrl: './as-card-inicio.html',
 })
-export class AsCardHome {
-  @Input({ required: true }) ItemCardHome!: ItemsCardHome;
+export class AsCardInicio {
+  @Input({ required: true }) ItemCardInicio!: ItensCardInicio;
 }

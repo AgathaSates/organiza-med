@@ -17,10 +17,10 @@
           loading="eager" /></a
     ></mat-toolbar>
     <mat-nav-list class="">
-      @for (item of itemsNavbar; track item.name) {
+      @for (item of itensNavbar; track item.nome) {
         <a mat-list-item [routerLink]="item.route">
-          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-          {{ item.name }}
+          <mat-icon matListItemIcon>{{ item.icone }}</mat-icon>
+          {{ item.nome }}
         </a>
       }
     </mat-nav-list>

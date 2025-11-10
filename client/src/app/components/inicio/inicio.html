@@ -4,8 +4,8 @@
   </mat-card>
 
   <div class="text-center mt-4">
-    <h1 class="blue-text">Onde a Ordem Vira Cuidado</h1>
-    <h5 class="blue-text">
+    <h1 class="texto-azul">Onde a Ordem Vira Cuidado</h1>
+    <h5 class="texto-azul">
       No Oblivion, Médicos, Pacientes e Procedimentos se conectam para que cada consulta aconteça no
       tempo certo — sem ruído, sem esquecimento.
     </h5>
@@ -13,9 +13,9 @@
 
   <div class="container">
     <div class="row mt-2 mt-md-3 g-4">
-      @for (item of itemsCardHome; track $index) {
+      @for (item of itensCardInicio; track $index) {
         <div class="col col-sm-4">
-          <as-card-home [ItemCardHome]="item"></as-card-home>
+          <as-card-inicio [ItemCardInicio]="item"></as-card-inicio>
         </div>
       }
     </div>
