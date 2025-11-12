@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -11,6 +11,8 @@ import { map, shareReplay } from 'rxjs/operators';
 import { RouterLink } from '@angular/router';
 import { ItensNavbar } from '../../../models/itens-navbar';
 import { ITENS_NAVBAR } from '../../../data/items-navbar.data';
+import { UsuarioAutenticadoModel } from '../../auth/auth.models';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'as-shell',
@@ -22,6 +24,7 @@ import { ITENS_NAVBAR } from '../../../data/items-navbar.data';
     MatSidenavModule,
     MatListModule,
     MatIconModule,
+    MatMenuModule,
     AsyncPipe,
     RouterLink,
   ],
@@ -31,6 +34,8 @@ export class AsShell {
 
   public readonly itensNavbar: readonly ItensNavbar[] = ITENS_NAVBAR;
 
+  @Input({ required: true }) usuarioAutenticado!: UsuarioAutenticadoModel;
+  @Output() logoutRequisitado = new EventEmitter<void>();
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Handset])
     .pipe(

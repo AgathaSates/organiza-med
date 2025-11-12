@@ -1,6 +1,12 @@
-<as-shell>
-  <router-outlet></router-outlet>
-</as-shell>
+@if (accessToken$ | async; as accessToken) {
+  <as-shell [usuarioAutenticado]="accessToken.dados.usuario" (logoutRequisitado)="logout()">
+    <router-outlet></router-outlet>
+  </as-shell>
+} @else {
+  <main class="container">
+    <router-outlet></router-outlet>
+  </main>
+}
 
 <footer class="app-footer justify-content-center" role="contentinfo">
   <div class="text-center">
