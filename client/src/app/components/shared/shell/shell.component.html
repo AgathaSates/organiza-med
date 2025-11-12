@@ -32,6 +32,17 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
+      <button mat-raised-button [matMenuTriggerFor]="opcoesUsuario" class="ms-auto botao-login">
+        <mat-icon>assignment_ind</mat-icon>
+        {{ usuarioAutenticado.userName }}
+      </button>
+
+      <mat-menu #opcoesUsuario="matMenu" class="container-login">
+        <button mat-menu-item style="min-width: 160px" (click)="logoutRequisitado.emit()">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </mat-menu>
     </mat-toolbar>
     <div class="container-fluid mt-3">
       <ng-content></ng-content>

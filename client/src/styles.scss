@@ -94,6 +94,20 @@ body {
   color: #021421 !important;
 }
 
+.botao-login {
+  background-color: #3a7982 !important;
+  color: #e0e2ec !important;
+}
+
+.container-login {
+  background-color: #021421 !important;
+  color: #e0e2ec !important;
+}
+
+.mat-mdc-menu-item:hover {
+  background: #0e3f63;
+}
+
 .app-footer {
   flex-shrink: 0;
   padding: 1rem;
