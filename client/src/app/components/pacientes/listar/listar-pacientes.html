@@ -1,1 +1,58 @@
-<p>listar-pacientes works!</p>
+<section class="row justify-content-center">
+  <div class="col-md-11 col-xl-8">
+    <h2>Listagem de Pacientes <mat-icon class="texto-azul">personal_injury</mat-icon></h2>
+
+    <div class="row g-1 mt-3">
+      <a mat-flat-button class="col-md-6 col-xl-2 botao-com-tema" routerLink="cadastrar">
+        <mat-icon>add</mat-icon>
+        Cadastrar
+      </a>
+    </div>
+
+    <hr />
+
+    <div class="row g-3">
+      @for (paciente of pacientes$ | async; track $index) {
+        <div class="col-md-6 col-xl-4">
+          <mat-card class="mb-2">
+            <mat-card-header>
+              <mat-card-title [matTooltip]="paciente.nome">
+                Nome:
+                {{
+                  paciente.nome.length > 18 ? (paciente.nome | slice: 0 : 18) + '…' : paciente.nome
+                }}
+              </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="mt-2">
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">badge</mat-icon>
+                <span class="text-monospace"> <strong>CPf:</strong> {{ paciente.cpf }} </span>
+              </div>
+
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">mail</mat-icon>
+                <a><strong>E-mail:</strong> {{ paciente.email }}</a>
+              </div>
+
+              <div class="d-flex align-items-center">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">call</mat-icon>
+                <a> <strong>Telefone:</strong> {{ paciente.telefone }} </a>
+              </div></mat-card-content
+            >
+            <mat-card-actions align="end">
+              <a [routerLink]="['editar', paciente.id]" mat-icon-button class="botao-com-tema"
+                ><mat-icon>edit</mat-icon></a
+              >
+              <a [routerLink]="['excluir', paciente.id]" mat-icon-button class="botao-com-tema ms-1"
+                ><mat-icon>delete</mat-icon></a
+              >
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      } @empty {
+        <div class="col-12 text-center text-muted py-5">Nenhum paciente cadastrado ainda.</div>
+      }
+    </div>
+  </div>
+</section>
