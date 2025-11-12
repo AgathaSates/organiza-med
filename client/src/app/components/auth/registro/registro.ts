@@ -1,0 +1,68 @@
+import { Component, inject } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { AccessTokenModel, RegistrarModel } from '../auth.models';
+import { PartialObserver } from 'rxjs';
+
+@Component({
+  selector: 'app-registro',
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    RouterLink,
+    ReactiveFormsModule,
+  ],
+  templateUrl: './registro.html',
+})
+export class Registro {
+  protected readonly formBuilder = inject(FormBuilder);
+  protected readonly router = inject(Router);
+  protected readonly authService = inject(AuthService);
+
+  protected registrarForm: FormGroup = this.formBuilder.group({
+    userName: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(256),
+        Validators.pattern(/^[a-zA-Z0-9._@+-]+$/),
+      ],
+    ],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+  });
+
+  get userName() {
+    return this.registrarForm.get('userName');
+  }
+
+  get email() {
+    return this.registrarForm.get('email');
+  }
+
+  get password() {
+    return this.registrarForm.get('password');
+  }
+
+  public registro() {
+    if (this.registrarForm.invalid) return;
+
+    const registrarModel: RegistrarModel = this.registrarForm.value;
+
+    const registroObserver: PartialObserver<AccessTokenModel> = {
+      complete: () => this.router.navigate(['/inicio']),
+    };
+
+    this.authService.registro(registrarModel).subscribe(registroObserver);
+  }
+}

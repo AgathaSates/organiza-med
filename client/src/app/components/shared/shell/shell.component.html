@@ -19,8 +19,8 @@
     <mat-nav-list class="">
       @for (item of itensNavbar; track item.nome) {
         <a mat-list-item [routerLink]="item.route">
-          <mat-icon matListItemIcon>{{ item.icone }}</mat-icon>
-          {{ item.nome }}
+          <mat-icon matListItemIcon class="texto-branco">{{ item.icone }}</mat-icon>
+          <div class="texto-branco">{{ item.nome }}</div>
         </a>
       }
     </mat-nav-list>
@@ -39,8 +39,8 @@
 
       <mat-menu #opcoesUsuario="matMenu" class="container-login">
         <button mat-menu-item style="min-width: 160px" (click)="logoutRequisitado.emit()">
-          <mat-icon>logout</mat-icon>
-          Logout
+          <mat-icon class="texto-branco">logout</mat-icon>
+          <div class="texto-branco">Logout</div>
         </button>
       </mat-menu>
     </mat-toolbar>
