@@ -1,5 +1,5 @@
-<mat-card>
-  <mat-card-header class="">
+<mat-card class="mb-3">
+  <mat-card-header>
     <div class="d-flex justify-content-between align-items-center w-100">
       <mat-card-title class="">{{ ItemCardInicio.nomeModulo }}</mat-card-title>
       <button
@@ -27,8 +27,10 @@
       [routerLink]="ItemCardInicio.botao2Link"
       [title]="ItemCardInicio.botao2Title"
     >
-      <mat-icon>{{ ItemCardInicio.botaoIcone }}</mat-icon>
-      {{ ItemCardInicio.botaoTexto }}
+      <mat-icon class="texto-branco">{{ ItemCardInicio.botaoIcone }}</mat-icon>
+      <div class="texto-branco">
+        {{ ItemCardInicio.botaoTexto }}
+      </div>
     </a>
   </mat-card-content>
 </mat-card>
