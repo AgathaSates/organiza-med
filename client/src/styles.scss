@@ -3,6 +3,17 @@
 @use 'bootstrap/scss/bootstrap-utilities';
 @use '@angular/material' as mat;
 
+:host {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+  display: block; /* pode ser flex/grid se quiser, mas block já resolve */
+}
+
 html {
   @include mat.theme(
     (
@@ -36,7 +47,7 @@ html {
 }
 
 body {
-  color-scheme: dark;
+  color-scheme: light;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
@@ -74,24 +85,8 @@ body {
   color: #021421;
 }
 
-.mat-mdc-card-header {
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: #021421;
-  color: #e0e2ec;
-  font-weight: 800;
-  padding: 16px !important;
-}
-
-.mat-mdc-card-content {
-  border-end-end-radius: 10px;
-  border-end-start-radius: 10px;
-  background-color: #e0e2eb;
-  color: #021421;
-}
-
-.mat-mdc-card-subtitle {
-  color: #021421 !important;
+.texto-branco {
+  color: #e0e2ec !important;
 }
 
 .botao-login {
@@ -107,11 +102,43 @@ body {
 .mat-mdc-menu-item:hover {
   background: #0e3f63;
 }
+.mat-mdc-card-header {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #021421;
+  color: #e0e2ec;
+  font-weight: 800;
+  padding: 16px !important;
+}
+
+.mat-mdc-card-content {
+  border-end-end-radius: 10px;
+  border-end-start-radius: 10px;
+  color: #021421;
+}
+
+.mat-mdc-card-subtitle {
+  color: #021421 !important;
+}
 
 .app-footer {
+  margin-top: auto;
   flex-shrink: 0;
   padding: 1rem;
   display: flex;
   align-items: center;
   background-color: #093e4b;
+  color: #e0e2ec;
+}
+
+.login-page {
+  min-height: 91dvh;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+}
+
+.login-col {
+  width: 100%;
+  max-width: 560px;
 }
