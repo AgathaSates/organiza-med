@@ -1,1 +1,93 @@
-<p>listar-atividades-medicas works!</p>
+<section class="row justify-content-center">
+  <div class="col-md-11 col-xl-8">
+    <h2>Listagem de Procedimentos <mat-icon class="texto-azul">vaccines</mat-icon></h2>
+
+    <div class="row g-1 mt-3">
+      <a mat-flat-button class="col-md-6 col-xl-2 botao-com-tema" routerLink="cadastrar">
+        <mat-icon>add</mat-icon>
+        Cadastrar
+      </a>
+    </div>
+
+    <hr />
+
+    <div class="row g-3">
+      @for (atividadeMedica of atividadesMedicas$ | async; track $index) {
+        <div class="col-md-6 col-xl-4">
+          <mat-card class="mb-2">
+            <mat-card-header>
+              <mat-card-title [matTooltip]="atividadeMedica.tipoAtividade">
+                Tipo:
+                {{
+                  atividadeMedica.tipoAtividade.length > 18
+                    ? (atividadeMedica.tipoAtividade | slice: 0 : 18) + '…'
+                    : atividadeMedica.tipoAtividade
+                }}
+              </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="mt-2">
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">schedule</mat-icon>
+                <span class="text-monospace">
+                  <strong>Início:</strong>
+                  {{ atividadeMedica.inicio | date: 'dd/MM/yyyy | HH:mm' }}
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">event</mat-icon>
+                <span class="text-monospace">
+                  <strong>Término:</strong>
+                  {{ atividadeMedica.termino | date: 'dd/MM/yyyy | HH:mm' }}
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">category</mat-icon>
+                <span class="text-monospace">
+                  <strong>Tipo:</strong> {{ atividadeMedica.tipoAtividade }}
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">personal_injury</mat-icon>
+                <span class="text-monospace">
+                  <strong>Paciente:</strong> {{ atividadeMedica.paciente.nome }}
+                </span>
+              </div>
+
+              <div class="d-flex align-items-center mb-1">
+                <mat-icon class="me-2 icone-verde" aria-hidden="true">medical_information</mat-icon>
+                <span class="text-monospace">
+                  <strong>Médico(s):</strong>
+                  @for (medico of atividadeMedica.medicos; track medico.id; let last = $last) {
+                    {{ medico.nome }}{{ last ? '' : ', ' }}
+                  }
+                </span>
+              </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <a
+                [routerLink]="['editar', atividadeMedica.id]"
+                mat-icon-button
+                class="botao-com-tema"
+              >
+                <mat-icon>edit</mat-icon>
+              </a>
+              <a
+                [routerLink]="['excluir', atividadeMedica.id]"
+                mat-icon-button
+                class="botao-com-tema ms-1"
+              >
+                <mat-icon>delete</mat-icon>
+              </a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      } @empty {
+        <div class="col-12 text-center text-muted py-5">Nenhum procedimento cadastrado ainda.</div>
+      }
+    </div>
+  </div>
+</section>
