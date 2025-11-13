@@ -57,6 +57,34 @@ html {
       title-text-weight: 500,
     )
   );
+
+  .notificacao-sucesso {
+    @include mat.snack-bar-overrides(
+      (
+        button-color: #ffffff,
+        container-color: #2e7d32,
+      )
+    );
+  }
+
+  .notificacao-aviso {
+    @include mat.snack-bar-overrides(
+      (
+        button-color: #1a1500,
+        container-color: #f59e0b,
+        supporting-text-color: #1a1500,
+      )
+    );
+  }
+
+  .notificacao-erro {
+    @include mat.snack-bar-overrides(
+      (
+        button-color: var(--mat-sys-surface),
+        container-color: var(--mat-sys-error),
+      )
+    );
+  }
 }
 
 body {

@@ -8,6 +8,7 @@ import { CanActivateFn, provideRouter, Router, Routes } from '@angular/router';
 import { provideAuth } from './components/auth/auth.provider';
 import { AuthService } from './components/auth/auth.service';
 import { map, take } from 'rxjs';
+import { provideNotifications } from './components/shared/notificacao/notificacao.provider';
 
 const usuarioDesconhecidoGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
@@ -67,7 +68,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-
+    provideNotifications(),
     provideAuth(),
   ],
 };
