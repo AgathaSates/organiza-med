@@ -51,8 +51,8 @@ export class EditarMedico {
   }
 
   protected readonly medicos$ = this.route.data.pipe(
-    filter((data) => data['medicos']),
-    map((data) => data['medicos'] as DetalhesMedicoModel),
+    filter((data) => data['medico']),
+    map((data) => data['medico'] as DetalhesMedicoModel),
     tap((medico) => this.medicoForm.patchValue(medico.dados)),
     shareReplay({ bufferSize: 1, refCount: true }),
   );

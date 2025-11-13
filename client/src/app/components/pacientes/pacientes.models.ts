@@ -23,6 +23,7 @@ export interface CadastrarPacienteModel {
   email: string;
   telefone: string;
 }
+
 export interface CadastrarPacienteResponseModel {
   sucesso: boolean;
   dados: DadosCadastrarPacienteResponse;
@@ -38,6 +39,7 @@ export interface EditarPacienteModel {
   email: string;
   telefone: string;
 }
+
 export interface EditarPacienteResponseModel {
   sucesso: boolean;
   dados: DadosEditarPacienteResponse;

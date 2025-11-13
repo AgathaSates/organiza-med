@@ -12,7 +12,7 @@ import {
   MedicoModel,
 } from './medicos.models';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class MedicosService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.apiUrl + '/api/medicos';

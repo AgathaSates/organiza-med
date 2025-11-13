@@ -12,7 +12,7 @@ import {
   PacienteModel,
 } from './pacientes.models';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class PacientesService {
   private readonly http = inject(HttpClient);
   private readonly apiUrl = environment.apiUrl + '/api/pacientes';
