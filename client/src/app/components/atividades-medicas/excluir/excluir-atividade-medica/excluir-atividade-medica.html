@@ -1,0 +1,32 @@
+<section class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <h2>Exclusão de Atividade Médica <mat-icon class="texto-azul">vaccines</mat-icon></h2>
+    <hr />
+
+    <mat-card class="mb-2">
+      @if (atividadeMedica$ | async; as atividadeMedica) {
+        <form (ngSubmit)="excluir()">
+          <mat-card-header>
+            <mat-card-title>Confirme a exclusão do registro</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content class="mt-3">
+            <span class="fs-6"
+              >Você deseja realmente excluir o procedimento do paciente "{{
+                atividadeMedica.dados.paciente.nome
+              }}"? Esta ação é irreversível...</span
+            >
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <a mat-stroked-button routerLink="/atividades-medicas">Voltar</a>
+            <button type="submit" mat-flat-button class="ms-2 px-5">
+              <mat-icon>check</mat-icon>
+              Confirmar
+            </button>
+          </mat-card-actions>
+        </form>
+      }
+    </mat-card>
+  </div>
+</section>

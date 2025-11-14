@@ -1,0 +1,89 @@
+<section class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+    <h2>Cadastro de Procedimentos Médicos <mat-icon class="texto-azul">vaccines</mat-icon></h2>
+    <hr />
+
+    <mat-card class="mb-2">
+      <form [formGroup]="atividadeForm" (ngSubmit)="cadastrar()">
+        <mat-card-header>
+          <mat-card-title>Preencha o formulário de cadastro</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="mt-4">
+          @if (atividadeForm.hasError('apenasUmMedicoPorConsulta')) {
+            <mat-error class="mb-3">Consultas podem ser realizadas por apenas um médico.</mat-error>
+          }
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Início</mat-label>
+            <input formControlName="inicio" matInput type="datetime" />
+
+            @if (inicio?.errors?.['required']) {
+              <mat-error>O início da atividade médica é obrigatório.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+            <mat-label>Término</mat-label>
+            <input formControlName="termino" matInput type="datetime" />
+
+            @if (termino?.errors?.['required']) {
+              <mat-error>O término previsto da atividade médica é obrigatório.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+            <mat-label>Tipo de Atividade</mat-label>
+            <mat-select formControlName="tipoAtividade">
+              @for (tipo of tiposAtividadeMedica; track $index) {
+                <mat-option [value]="tipo">{{ tipo }}</mat-option>
+              }
+            </mat-select>
+
+            @if (tipoAtividade?.errors?.['required']) {
+              <mat-error>O tipo da atividade médica é obrigatório.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+            <mat-label>Paciente</mat-label>
+            <mat-select formControlName="pacienteId">
+              @for (paciente of pacientes$ | async; track $index) {
+                <mat-option [value]="paciente.id">{{ paciente.nome }}</mat-option>
+              }
+            </mat-select>
+
+            @if (pacienteId?.errors?.['required']) {
+              <mat-error>O paciente da atividade médica é obrigatório.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100 mt-3">
+            <mat-label>Médico(s)</mat-label>
+            <mat-select formControlName="medicos" multiple>
+              @for (medico of medicos$ | async; track $index) {
+                <mat-option [value]="medico.id">{{ medico.nome }}</mat-option>
+              }
+            </mat-select>
+
+            @if (medicos?.hasError('required')) {
+              <mat-error>O médico da atividade médica é obrigatório.</mat-error>
+            }
+          </mat-form-field>
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <a mat-stroked-button routerLink="/atividades-medicas">Voltar</a>
+          <button
+            type="submit"
+            [disabled]="atividadeForm.invalid"
+            mat-flat-button
+            class="ms-2 px-5"
+          >
+            <mat-icon>check</mat-icon>
+            Concluir
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</section>

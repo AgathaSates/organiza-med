@@ -1,4 +1,4 @@
-import { AsyncPipe, DatePipe, JsonPipe, SlicePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, SlicePipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -20,7 +20,6 @@ import { AtividadeMedicaModel } from '../atividades-medicas.models';
     MatTooltipModule,
     SlicePipe,
     DatePipe,
-    JsonPipe,
   ],
   templateUrl: './listar-atividades-medicas.html',
 })

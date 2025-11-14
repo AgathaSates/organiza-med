@@ -39,14 +39,11 @@ export interface CadastrarAtividadeMedicaMedicoModel {
   id: string;
 }
 //--------------------Editar--------------------------
+// Pode remover o Partial ou transformar em alias; o importante é o shape do body:
 export interface EditarAtividadeMedicaModel {
-  inicio: string | Date;
-  termino: string | Date;
-  medicos: EditarAtividadeMedicaMedicoModel[];
-}
-
-export interface EditarAtividadeMedicaMedicoModel {
-  id: string;
+  inicio: string | Date | null;
+  termino: string | Date | null;
+  medicos: string[];
 }
 
 export interface EditarAtividadeMedicaResponseModel {

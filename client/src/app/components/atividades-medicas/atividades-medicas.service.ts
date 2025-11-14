@@ -4,13 +4,12 @@ import { environment } from '../../../environments/environment.development';
 import { map, Observable } from 'rxjs';
 import {
   AtividadeMedicaModel,
-  CadastrarAtividadeMedicaMedicoModel,
+  CadastrarAtividadeMedicaModel,
   CadastrarAtividadeMedicaResponseModel,
   DetalhesAtividadeMedicaModel,
-  EditarAtividadeMedicaMedicoModel,
+  EditarAtividadeMedicaModel,
   EditarAtividadeMedicaResponseModel,
   ListagemAtividadesMedicasApiResponse,
-  TipoAtividadeMedica,
 } from './atividades-medicas.models';
 
 @Injectable()
@@ -19,14 +18,14 @@ export class AtividadesMedicasService {
   private readonly apiUrl = environment.apiUrl + '/api/atividades-medicas';
 
   public cadastrar(
-    atividadeMedicaModel: CadastrarAtividadeMedicaMedicoModel,
+    atividadeMedicaModel: CadastrarAtividadeMedicaModel,
   ): Observable<CadastrarAtividadeMedicaResponseModel> {
     return this.http.post<CadastrarAtividadeMedicaResponseModel>(this.apiUrl, atividadeMedicaModel);
   }
 
   public editar(
     id: string,
-    editarAtividadeMedicaModel: EditarAtividadeMedicaMedicoModel,
+    editarAtividadeMedicaModel: EditarAtividadeMedicaModel,
   ): Observable<EditarAtividadeMedicaResponseModel> {
     const urlCompleto = `${this.apiUrl}/${id}`;
 
