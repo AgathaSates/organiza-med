@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '',
+  apiUrl: 'https://organiza-med-api-hwaabddbg5ggdubb.brazilsouth-01.azurewebsites.net',
 };
