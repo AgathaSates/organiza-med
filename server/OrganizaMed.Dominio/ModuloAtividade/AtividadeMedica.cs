@@ -1,5 +1,4 @@
-﻿using System;
-using OrganizaMed.Dominio.Compartilhado;
+﻿using OrganizaMed.Dominio.Compartilhado;
 using OrganizaMed.Dominio.ModuloMedico;
 using OrganizaMed.Dominio.ModuloPaciente;
 

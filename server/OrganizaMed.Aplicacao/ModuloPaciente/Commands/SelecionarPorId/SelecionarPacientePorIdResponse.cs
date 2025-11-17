@@ -9,7 +9,6 @@ public record SelecionarAtividadePacienteDto(
     DateTimeOffset Termino,
     TipoAtividadeMedica TipoAtividade,
     IEnumerable<SelecionarMedicosDto> Medicos
-
 ); 
 
 public record SelecionarPacientePorIdResponse(

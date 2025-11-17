@@ -12,8 +12,8 @@ using OrganizaMed.Infraestrutura.Orm.Compartilhado;
 namespace OrganizaMed.Infraestrutura.Orm.Migrations
 {
     [DbContext(typeof(OrganizaMedDbContext))]
-    [Migration("20251114221707_migracao-final")]
-    partial class migracaofinal
+    [Migration("20251114141714_Add_Tabelas")]
+    partial class Add_Tabelas
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

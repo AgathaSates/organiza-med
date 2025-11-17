@@ -57,15 +57,13 @@ public class EditarPacienteRequestHandler(
  
         return Result.Ok(new EditarPacienteResponse(pacienteSelecionado.Id));
     }
-
-    private static bool CpfDuplicado(Paciente paciente, IEnumerable<Paciente> pacientes)
+    
+    private bool CpfDuplicado(Paciente paciente, IEnumerable<Paciente> pacientes)
     {
-        return pacientes.Any(registro =>
-            registro.Id != paciente.Id &&
-            string.Equals(
-                registro.Cpf,
-                paciente.Cpf,
-                StringComparison.OrdinalIgnoreCase));
+        return pacientes
+            .Any(registro => 
+                !registro.Id.Equals(paciente.Id) &&
+                string.Equals(registro.Cpf, paciente.Cpf, StringComparison.CurrentCultureIgnoreCase)
+            );
     }
-
 }

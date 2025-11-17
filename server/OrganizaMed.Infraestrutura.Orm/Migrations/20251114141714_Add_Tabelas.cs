@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OrganizaMed.Infraestrutura.Orm.Migrations
 {
     /// <inheritdoc />
-    public partial class migracaofinal : Migration
+    public partial class Add_Tabelas : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
