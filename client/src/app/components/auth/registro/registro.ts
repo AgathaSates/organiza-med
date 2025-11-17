@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { AccessTokenModel, RegistrarModel } from '../auth.models';
 import { PartialObserver } from 'rxjs';
+import { NotificacaoService } from '../../shared/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-registro',
@@ -27,6 +28,7 @@ export class Registro {
   protected readonly formBuilder = inject(FormBuilder);
   protected readonly router = inject(Router);
   protected readonly authService = inject(AuthService);
+  protected readonly notificacaoService = inject(NotificacaoService);
 
   protected registrarForm: FormGroup = this.formBuilder.group({
     userName: [
@@ -60,6 +62,7 @@ export class Registro {
     const registrarModel: RegistrarModel = this.registrarForm.value;
 
     const registroObserver: PartialObserver<AccessTokenModel> = {
+      error: (err) => this.notificacaoService.erro(err.error.erros[0]),
       complete: () => this.router.navigate(['/inicio']),
     };
 

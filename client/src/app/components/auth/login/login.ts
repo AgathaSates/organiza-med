@@ -9,6 +9,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { PartialObserver } from 'rxjs';
 import { AccessTokenModel, LoginModel } from '../auth.models';
+import { NotificacaoService } from '../../shared/notificacao/notificacao.service';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,7 @@ export class Login {
   protected readonly formBuilder = inject(FormBuilder);
   protected readonly router = inject(Router);
   protected readonly authService = inject(AuthService);
+  protected readonly notificacaoService = inject(NotificacaoService);
 
   protected loginForm: FormGroup = this.formBuilder.group({
     userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -47,6 +49,7 @@ export class Login {
     const loginModel: LoginModel = this.loginForm.value;
 
     const loginObserver: PartialObserver<AccessTokenModel> = {
+      error: (err) => this.notificacaoService.erro(err.error.erros[0]),
       complete: () => this.router.navigate(['/inicio']),
     };
 
